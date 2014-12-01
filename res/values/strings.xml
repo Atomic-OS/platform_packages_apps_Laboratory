@@ -373,6 +373,7 @@
     <string name="hardware_keys_double_tap_title">Double tap action</string>
     <string name="hardware_keys_category">Hardware buttons</string>
     <string name="hardware_keys_disable_title">Disable hardware buttons</string>
+    <string name="hardware_keys_wake_title">Wake device</string>
 
     <!-- Power Menu -->
     <string name="powermenu_reboot_title">Reboot</string>
