@@ -54,6 +54,11 @@
         android:title="@string/screenshot_edit_app"
         android:summary="@string/screenshot_edit_app_summary" />
 
+    <Preference
+        android:key="smart_pixels"
+        android:title="@string/smart_pixels_title"
+        android:fragment="com.aos.laboratory.fragments.SmartPixels" />
+
     <PreferenceCategory
         android:key="light_category"
         android:title="@string/light_category">
