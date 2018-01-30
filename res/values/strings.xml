@@ -702,6 +702,17 @@
     <string name="smart_pixels_shift_title">Burn-in protection</string>
     <string name="smart_pixels_shift_summary">Prevents burn-in on OLED devices by shifting pixels every so often</string>
 
+ <!-- Force expanded notifications -->
+   <string name="force_expanded_notifications_title">Force expanded notifications</string>
+   <string name="force_expanded_notifications_summary">Available only for apps that support expanded notifications</string>
+    <string name="notif_settings_summary">Expanded notifications and Immersive Mode Settings</string>
+    <string name="notif_settings_title">Expanded notifications</string>
+
+    <!-- Disabling immersive mode messages -->
+   <string name="disable_immersive_message_title">Disable immersive mode messages</string>
+   <string name="disable_immersive_message_summary">This will hide all immersive mode messages</string>
+
+
 </resources>
 
 
