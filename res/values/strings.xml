@@ -730,5 +730,10 @@
     <!-- SystemUI Restart -->
     <string name="systemui_restart_toast">This feature requires a SystemUI restart to be applied. Restart SystemUI now?</string>
 
+
+    <!-- SystemUI Restart -->
+    <string name="systemui_restart_title">SystemUI restart required</string>
+    <string name="systemui_restart_message">For all changes to take effect, a SystemUI restart is required. Restart SystemUI now?</string>
+
 </resources>
 
