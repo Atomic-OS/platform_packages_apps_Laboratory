@@ -60,4 +60,10 @@
         android:entries="@array/screen_off_animation_entries"
         android:entryValues="@array/screen_off_animation_values" />
 
+
+    <Preference
+        android:key="screenshot_edit_app"
+        android:title="@string/screenshot_edit_app"
+        android:summary="@string/screenshot_edit_app_summary" />
+
 </PreferenceScreen>

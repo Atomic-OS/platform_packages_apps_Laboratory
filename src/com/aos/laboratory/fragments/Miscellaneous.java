@@ -16,10 +16,13 @@
 
 package com.aos.laboratory.fragments;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.UserHandle;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.ListPreference;
@@ -34,20 +37,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import android.widget.Toast;
+
 import com.android.internal.utils.du.DUActionUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.nano.MetricsProto;
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+
+import com.aos.laboratory.preferences.ScreenshotEditPackageListAdapter;
+import com.aos.laboratory.preferences.ScreenshotEditPackageListAdapter.PackageItem;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class Miscellaneous extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
 
     private static final String HEADSET_CONNECT_PLAYER = "headset_connect_player";
     private static final String TORCH_POWER_BUTTON_GESTURE = "torch_power_button_gesture";
     private static final String SCREEN_OFF_ANIMATION = "screen_off_animation";
+    private static final int DIALOG_SCREENSHOT_EDIT_APP = 1;
 
     private ListPreference mLaunchPlayerHeadsetConnection;
     private ListPreference mTorchPowerButton;
@@ -55,6 +68,8 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
 
     private PreferenceCategory mLedsCategory;
     private Preference mChargingLeds;
+    private Preference mScreenshotEditAppPref;
+    private ScreenshotEditPackageListAdapter mPackageAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,6 +77,10 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
               addPreferencesFromResource(R.xml.MiscPrefs);
               ContentResolver resolver = getActivity().getContentResolver();
               final PreferenceScreen prefSet = getPreferenceScreen();
+
+        mPackageAdapter = new ScreenshotEditPackageListAdapter(getActivity());
+        mScreenshotEditAppPref = findPreference("screenshot_edit_app");
+        mScreenshotEditAppPref.setOnPreferenceClickListener(this);
 
         mLaunchPlayerHeadsetConnection = (ListPreference) findPreference(HEADSET_CONNECT_PLAYER);
         int mLaunchPlayerHeadsetConnectionValue = Settings.System.getIntForUser(resolver,
@@ -103,6 +122,43 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
         }
 
    }
+
+    @Override
+    public Dialog onCreateDialog(int dialogId) {
+        switch (dialogId) {
+            case DIALOG_SCREENSHOT_EDIT_APP: {
+                Dialog dialog;
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                final ListView list = new ListView(getActivity());
+                list.setAdapter(mPackageAdapter);
+                alertDialog.setTitle(R.string.profile_choose_app);
+                alertDialog.setView(list);
+                dialog = alertDialog.create();
+                list.setOnItemClickListener(new OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // Add empty application definition, the user will be able to edit it later
+                        PackageItem info = (PackageItem) parent.getItemAtPosition(position);
+                        Settings.System.putString(getActivity().getContentResolver(),
+                                Settings.System.SCREENSHOT_EDIT_USER_APP, info.packageName);
+                        dialog.cancel();
+                    }
+                });
+                return dialog;
+            }
+         }
+        return super.onCreateDialog(dialogId);
+    }
+
+    @Override
+    public int getDialogMetricsCategory(int dialogId) {
+        switch (dialogId) {
+            case DIALOG_SCREENSHOT_EDIT_APP:
+                return MetricsEvent.LABORATORY;
+            default:
+                return 0;
+        }
+    }
 
     @Override
     public int getMetricsCategory() {
@@ -152,4 +208,17 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
         }
          return false;
       }
+
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+        // Don't show the dialog if there are no available editor apps
+        if (preference == mScreenshotEditAppPref && mPackageAdapter.getCount() > 0) {
+            showDialog(DIALOG_SCREENSHOT_EDIT_APP);
+        } else {
+            Toast.makeText(getActivity(), getActivity().getString(R.string.screenshot_edit_app_no_editor),
+                    Toast.LENGTH_LONG).show();
+        }
+        return true;
+    }
+
 }
