@@ -37,10 +37,13 @@ import com.android.internal.logging.nano.MetricsProto;
 
 public class QuickSettings extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
 
+    private static final String QS_PANEL_ALPHA = "qs_panel_alpha";
+
     private CustomSeekBarPreference mQsRowsPort;
     private CustomSeekBarPreference mQsRowsLand;
     private CustomSeekBarPreference mQsColumnsPort;
     private CustomSeekBarPreference mQsColumnsLand;
+    private CustomSeekBarPreference mQsPanelAlpha;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,6 +78,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
         mQsColumnsLand.setValue(value);
         mQsColumnsLand.setOnPreferenceChangeListener(this);
 
+        mQsPanelAlpha = (CustomSeekBarPreference) findPreference(QS_PANEL_ALPHA);
+        int qsPanelAlpha = Settings.System.getIntForUser(resolver,
+                Settings.System.QS_PANEL_BG_ALPHA, 255, UserHandle.USER_CURRENT);
+        mQsPanelAlpha.setValue(qsPanelAlpha);
+        mQsPanelAlpha.setOnPreferenceChangeListener(this);
+
     }
 
     @Override
@@ -99,6 +108,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
             int val = (Integer) newValue;
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.QS_COLUMNS_LANDSCAPE, val, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mQsPanelAlpha) {
+            int bgAlpha = (Integer) newValue;
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.QS_PANEL_BG_ALPHA, bgAlpha,
+                    UserHandle.USER_CURRENT);
             return true;
         }
         return false;

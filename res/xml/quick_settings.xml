@@ -38,6 +38,14 @@
         android:dependency="qs_show_brightness"
         android:defaultValue="false"/>
 
+    <com.aos.laboratory.preferences.CustomSeekBarPreference
+        android:key="qs_panel_alpha"
+        android:title="@string/qs_panel_alpha_title"
+        android:max="255"
+        settings:min="0"
+        settings:units=""
+        android:persistent="false" />
+
     <com.aos.laboratory.preferences.SystemSettingSwitchPreference
         android:key="qs_footer_warnings"
         android:title="@string/qs_footer_warnings_title"
