@@ -63,6 +63,7 @@
 
     <Preference
         android:key="screenshot_edit_app"
+        android:icon="@drawable/ic_screenshot"
         android:title="@string/screenshot_edit_app"
         android:summary="@string/screenshot_edit_app_summary" />
 
