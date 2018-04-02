@@ -41,6 +41,19 @@
         android:entries="@array/torch_power_button_gesture_entries"
         android:entryValues="@array/torch_power_button_gesture_values" />
 
+    <ListPreference
+        android:key="screen_off_animation"
+        android:icon="@drawable/ic_animation"
+        android:title="@string/screen_off_animation_title"
+        android:entries="@array/screen_off_animation_entries"
+        android:entryValues="@array/screen_off_animation_values" />
+
+    <Preference
+        android:key="screenshot_edit_app"
+        android:icon="@drawable/ic_screenshot"
+        android:title="@string/screenshot_edit_app"
+        android:summary="@string/screenshot_edit_app_summary" />
+
     <PreferenceCategory
         android:key="light_category"
         android:title="@string/light_category">
@@ -52,19 +65,5 @@
          android:icon="@drawable/ic_settings_led" />
 
     </PreferenceCategory>
-
-    <ListPreference
-        android:key="screen_off_animation"
-        android:icon="@drawable/ic_animation"
-        android:title="@string/screen_off_animation_title"
-        android:entries="@array/screen_off_animation_entries"
-        android:entryValues="@array/screen_off_animation_values" />
-
-
-    <Preference
-        android:key="screenshot_edit_app"
-        android:icon="@drawable/ic_screenshot"
-        android:title="@string/screenshot_edit_app"
-        android:summary="@string/screenshot_edit_app_summary" />
 
 </PreferenceScreen>
