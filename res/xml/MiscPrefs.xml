@@ -54,6 +54,13 @@
         android:title="@string/screenshot_edit_app"
         android:summary="@string/screenshot_edit_app_summary" />
 
+    <Preference
+        android:key="chooser_activity_blacklist"
+        android:fragment="com.aos.laboratory.cat.ChooserActivityBlacklist"
+        android:title="@string/chooser_activity_blacklist_title"
+        android:summary="@string/chooser_activity_blacklist_summary"
+        android:persistent="false" />
+
     <PreferenceCategory
         android:key="light_category"
         android:title="@string/light_category">
