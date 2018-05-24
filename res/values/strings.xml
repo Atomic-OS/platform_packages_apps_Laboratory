@@ -46,6 +46,7 @@
     <string name="notifications_category">Notifications Settings</string>
     <string name="status_bar_clock">Clock &amp; Date</string>
     <string name="status_bar_battery">Battery</string>
+    <string name="items_other">Other</string>
 
     <!-- General -->
     <string name="ok">Okay</string>
@@ -671,11 +672,19 @@
 
     <string name="lockscreen_weather_footer_warning">Avoid using Lockscreen weather along with custom Lockscreen clock styles, specially on lower DPI as clock might cut out of screen.</string>
 
+    <!-- Chooser activity blacklist -->
     <string name="chooser_activity_blacklist_title">Chooser Activity blacklist</string>
     <string name="chooser_activity_blacklist_summary">Apps to not show when tapping on the Share button</string>
     <string name="chooser_activity_blacklist_cat_title">Blacklist</string>
     <string name="chooser_activity_blacklist_pref_title">Add app</string>
     <string name="chooser_activity_blacklist_pref_summary">Tap here to add, tap on added app to remove it</string>
+
+    <!-- Wallpaper tint -->
+    <string name="wallpaper_tint_power_menu">Power menu background tint</string>
+    <string name="wallpaper_tint_recents">Recents background tint</string>
+    <string name="wallpaper_tint_keyguard">Lockscreen background tint</string>
+    <string name="wallpaper_tint_notification_shade">Notification shade tint</string>
+    <string name="wallpaper_tint_summary">Apply a tint to the background based on the homescreen wallpaper</string>
 
 </resources>
 

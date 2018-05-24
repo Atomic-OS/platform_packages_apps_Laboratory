@@ -39,6 +39,12 @@
         android:title="@string/powermenu_airplane_title"
         android:defaultValue="false" />
 
+    <com.aos.laboratory.preferences.SystemSettingSwitchPreference
+        android:key="wallpaper_power_menu_tint"
+        android:title="@string/wallpaper_tint_power_menu"
+        android:summary="@string/wallpaper_tint_summary"
+        android:defaultValue="true" />
+
     <PreferenceCategory
         android:key="powermenu_category_visibility"
         android:title="@string/powermenu_category_visibility">
