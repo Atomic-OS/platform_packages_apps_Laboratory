@@ -490,11 +490,9 @@
     <string name="torch_power_button_gesture_dt">Double tap power to toggle torch (will add a small delay to single tap)</string>
     <string name="torch_power_button_gesture_lp">Long press power to toggle torch</string>
 
-    <!-- Notifications sound and vibration if screen is on -->
-    <string name="notification_sound_vib_screen_on_title">Notifications sound and vibration if screen is on</string>
-    <string name="notification_sound_vib_screen_on_never">Never</string>
-    <string name="notification_sound_vib_screen_on_always">Always (default)</string>
-    <string name="notification_sound_vib_screen_on_nomedia">If no media is playing</string>
+    <!-- Suppress notification sound/vibration -->
+    <string name="notification_sound_vib_screen_on_title">Notification sound if screen is on</string>
+    <string name="notification_sound_vib_screen_on_summary">Play sound and vibration for notifications when screen is on</string>
 
     <!-- Ambient music -->
     <string name="force_ambient_for_media_pref_title">Ambient music ticker</string>
