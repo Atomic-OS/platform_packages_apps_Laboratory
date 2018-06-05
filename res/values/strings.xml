@@ -657,6 +657,8 @@
     <!-- QuickSettings Panel Transparency -->
     <string name="qs_panel_alpha_title">Opacity</string>
 
+    <string name="lockscreen_weather_footer_warning">Avoid using Lockscreen weather along with custom Lockscreen clock styles, specially on lower DPI as clock might cut out of screen.</string>
+
 </resources>
 
 
