@@ -20,17 +20,20 @@ import android.content.Context;
 import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.preference.ListPreference;
-import android.preference.SwitchPreference;
-import android.preference.Preference;
-import android.preference.PreferenceCategory;
-import android.preference.PreferenceScreen;
-import android.preference.Preference.OnPreferenceChangeListener;
+import android.os.UserHandle;
 import android.provider.Settings;
+
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.ListPreference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceScreen;
+import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v14.preference.SwitchPreference;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.nano.MetricsProto;
@@ -40,11 +43,52 @@ import com.aos.laboratory.R;
 public class Lockscreen extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
+    private static final String KEY_LOCKSCREEN_CLOCK_SELECTION = "lockscreen_clock_selection";
+    private static final String KEY_LOCKSCREEN_DATE_SELECTION = "lockscreen_date_selection";
+
+    private ListPreference mLockscreenClockSelection;
+    private ListPreference mLockscreenDateSelection;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
               super.onCreate(savedInstanceState);
               addPreferencesFromResource(R.xml.LockscreenPrefs);
               ContentResolver resolver = getActivity().getContentResolver();
+
+        mLockscreenClockSelection = (ListPreference) findPreference(KEY_LOCKSCREEN_CLOCK_SELECTION);
+        int clockSelection = Settings.System.getIntForUser(resolver,
+                Settings.System.LOCKSCREEN_CLOCK_SELECTION, 0, UserHandle.USER_CURRENT);
+        mLockscreenClockSelection.setValue(String.valueOf(clockSelection));
+        mLockscreenClockSelection.setSummary(mLockscreenClockSelection.getEntry());
+        mLockscreenClockSelection.setOnPreferenceChangeListener(this);
+
+        mLockscreenDateSelection = (ListPreference) findPreference(KEY_LOCKSCREEN_DATE_SELECTION);
+        int dateSelection = Settings.System.getIntForUser(resolver,
+                Settings.System.LOCKSCREEN_DATE_SELECTION, 0, UserHandle.USER_CURRENT);
+        mLockscreenDateSelection.setValue(String.valueOf(dateSelection));
+        mLockscreenDateSelection.setSummary(mLockscreenDateSelection.getEntry());
+        mLockscreenDateSelection.setOnPreferenceChangeListener(this);
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+         if (preference == mLockscreenClockSelection) {
+            int clockSelection = Integer.valueOf((String) objValue);
+            int index = mLockscreenClockSelection.findIndexOfValue((String) objValue);
+            Settings.System.putIntForUser(resolver,
+                    Settings.System.LOCKSCREEN_CLOCK_SELECTION, clockSelection, UserHandle.USER_CURRENT);
+            mLockscreenClockSelection.setSummary(mLockscreenClockSelection.getEntries()[index]);
+            return true;
+        } else if (preference == mLockscreenDateSelection) {
+            int dateSelection = Integer.valueOf((String) objValue);
+            int index = mLockscreenDateSelection.findIndexOfValue((String) objValue);
+            Settings.System.putIntForUser(resolver,
+                    Settings.System.LOCKSCREEN_DATE_SELECTION, dateSelection, UserHandle.USER_CURRENT);
+            mLockscreenDateSelection.setSummary(mLockscreenDateSelection.getEntries()[index]);
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -60,11 +104,6 @@ public class Lockscreen extends SettingsPreferenceFragment implements
     @Override
     public void onPause() {
         super.onPause();
-    }
-
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
-        final String key = preference.getKey();
-        return true;
     }
 
 }

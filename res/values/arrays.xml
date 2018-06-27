@@ -8,6 +8,44 @@
         <item>#72d3b4</item>
     </string-array>
 
+    <!-- Lockscreen clock styles -->
+    <string-array name="lockscreen_clock_selection_entries" translatable="false">
+        <item>@string/lockscreen_clock_selection_digital</item>
+        <item>@string/lockscreen_clock_selection_digital_bold</item>
+        <item>@string/lockscreen_clock_selection_analog</item>
+        <item>@string/lockscreen_clock_selection_analog_deadpool</item>
+        <item>@string/lockscreen_clock_selection_sammy</item>
+        <item>@string/lockscreen_clock_selection_sammy_bold</item>
+	    <item>@string/lockscreen_clock_selection_small</item>
+        <item>@string/lockscreen_clock_selection_analog_spidey</item>
+    </string-array>
+
+    <string-array name="lockscreen_clock_selection_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+	    <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <!-- Lockscreen date styles -->
+    <string-array name="lockscreen_date_selection_entries" translatable="false">
+        <item>@string/lockscreen_date_selection_default_aosp</item>
+        <item>@string/lockscreen_date_selection_default</item>
+        <item>@string/lockscreen_date_selection_str_box</item>
+        <item>@string/lockscreen_date_selection_str_round</item>
+    </string-array>
+
+    <string-array name="lockscreen_date_selection_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
     <!-- SystemUI theme -->
     <string-array name="systemui_theme_style_entries" translatable="false">
         <item>@string/systemui_theme_style_auto</item>
@@ -316,12 +354,14 @@
     <!-- Statusbar Clock options -->
     <string-array name="clock_style_entries" translatable="false">
         <item>@string/right_clock</item>
+        <item>@string/center_clock</item>
         <item>@string/left_clock</item>
     </string-array>
 
     <string-array name="clock_style_values" translatable="false">
         <item>0</item>
         <item>1</item>
+        <item>2</item>
     </string-array>
 
     <string-array name="clock_date_position_entries" translatable="false">
