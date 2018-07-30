@@ -31,19 +31,22 @@ import android.provider.Settings;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.aos.laboratory.preferences.CustomSeekBarPreference;
-import com.android.settings.Utils;
+
+import com.aos.laboratory.Utils;
 
 import com.android.internal.logging.nano.MetricsProto;
 
 public class QuickSettings extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
 
     private static final String QS_PANEL_ALPHA = "qs_panel_alpha";
+    private static final String QS_TILE_TINTING = "qs_tile_tinting_enable"; 
 
     private CustomSeekBarPreference mQsRowsPort;
     private CustomSeekBarPreference mQsRowsLand;
     private CustomSeekBarPreference mQsColumnsPort;
     private CustomSeekBarPreference mQsColumnsLand;
     private CustomSeekBarPreference mQsPanelAlpha;
+    private SwitchPreference mEnableQsTileTinting;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
 
          final ContentResolver resolver = getActivity().getContentResolver();
          final PreferenceScreen prefSet = getPreferenceScreen();
+
+       //QS Tile Theme
+        mEnableQsTileTinting = (SwitchPreference) findPreference(QS_TILE_TINTING);
+        mEnableQsTileTinting.setChecked(Settings.System.getInt(resolver,
+                Settings.System.QS_TILE_TINTING_ENABLE, 0) == 1);
+        mEnableQsTileTinting.setOnPreferenceChangeListener(this);
 
         int value = Settings.System.getIntForUser(resolver,
                 Settings.System.QS_ROWS_PORTRAIT, 3, UserHandle.USER_CURRENT);
@@ -115,6 +124,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
                     Settings.System.QS_PANEL_BG_ALPHA, bgAlpha,
                     UserHandle.USER_CURRENT);
             return true;
+        } else if (preference == mEnableQsTileTinting) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.QS_TILE_TINTING_ENABLE, value ? 1 : 0);
+             Utils.showSystemUiRestartDialog(getContext());
+             return true;
         }
         return false;
     }
