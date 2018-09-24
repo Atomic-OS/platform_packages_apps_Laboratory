@@ -16,20 +16,11 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    xmlns:laboratory="http://schemas.android.com/akp/res/com.aos.laboratory" >
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings" >
 
     <SwitchPreference
         android:key="navbar_visibility"
         android:title="@string/navbar_visibility" />
-
-    <!-- Edge Gestures -->
-    <PreferenceScreen
-        android:key="edge_gestures"
-        android:fragment="com.aos.laboratory.fragments.EdgeGesturesSettings"
-        android:title="@string/edge_gestures_title"
-        android:summary="@string/edge_gestures_summary"
-        android:persistent="false" />
 
     <PreferenceCategory
         android:key="category_navbar_interface"
