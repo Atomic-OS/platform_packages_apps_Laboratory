@@ -25,6 +25,13 @@
         android:title="@string/status_bar_quick_qs_pulldown"
         android:defaultValue="true" />
 
+        <ListPreference
+            android:key="quick_pulldown"
+            android:title="@string/quick_pulldown_title"
+            android:entries="@array/quick_pulldown_entries"
+            android:entryValues="@array/quick_pulldown_values"
+            android:persistent="false" />
+
     <com.aos.laboratory.preferences.SecureSettingSwitchPreference
         android:key="qs_show_brightness"
         android:title="@string/show_brightness_title"
@@ -45,6 +52,12 @@
         settings:min="0"
         settings:units=""
         android:persistent="false" />
+
+    <com.aos.laboratory.preferences.SystemSettingSwitchPreference
+        android:key="qs_tile_tinting_enable"
+        android:title="@string/qs_tile_theme_title"
+        android:summary="@string/qs_tile_theme_summary"
+        android:defaultValue="false" />
 
     <com.aos.laboratory.preferences.SystemSettingSwitchPreference
         android:key="qs_footer_warnings"

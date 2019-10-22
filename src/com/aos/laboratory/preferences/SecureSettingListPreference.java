@@ -30,6 +30,10 @@ public class SecureSettingListPreference extends ListPreference {
         super(context, attrs);
     }
 
+    public SecureSettingListPreference(Context context) {
+        super(context);
+    }
+
     @Override
     protected boolean persistString(String value) {
         if (shouldPersist()) {

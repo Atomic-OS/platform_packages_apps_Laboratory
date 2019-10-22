@@ -48,7 +48,7 @@ public class Ticker extends SettingsPreferenceFragment implements Preference.OnP
         mTickerMode.setOnPreferenceChangeListener(this);
         int tickerMode = Settings.System.getIntForUser(getContentResolver(),
                 Settings.System.STATUS_BAR_SHOW_TICKER,
-                1, UserHandle.USER_CURRENT);
+                0, UserHandle.USER_CURRENT);
         mTickerMode.setValue(String.valueOf(tickerMode));
         mTickerMode.setSummary(mTickerMode.getEntry());
 
@@ -59,6 +59,7 @@ public class Ticker extends SettingsPreferenceFragment implements Preference.OnP
                 1, UserHandle.USER_CURRENT);
         mTickerAnimation.setValue(String.valueOf(tickerAnimationMode));
         mTickerAnimation.setSummary(mTickerAnimation.getEntry());
+        updatePrefs();
     }
 
     @Override
@@ -68,6 +69,7 @@ public class Ticker extends SettingsPreferenceFragment implements Preference.OnP
             int tickerMode = Integer.parseInt(((String) newValue).toString());
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.STATUS_BAR_SHOW_TICKER, tickerMode, UserHandle.USER_CURRENT);
+            updatePrefs();
             int index = mTickerMode.findIndexOfValue((String) newValue);
             mTickerMode.setSummary(
                     mTickerMode.getEntries()[index]);
@@ -82,6 +84,20 @@ public class Ticker extends SettingsPreferenceFragment implements Preference.OnP
             return true;
          }
         return false;
+    }
+
+    private void updatePrefs() {
+          ContentResolver resolver = getActivity().getContentResolver();
+          boolean enabled = (Settings.Global.getInt(resolver,
+                  Settings.Global.HEADS_UP_NOTIFICATIONS_ENABLED, 0) == 1);
+        if (enabled) {
+            Settings.System.putInt(resolver,
+                Settings.System.STATUS_BAR_SHOW_TICKER, 0);
+            Settings.System.putInt(resolver,
+                Settings.System.STATUS_BAR_TICKER_ANIMATION_MODE, 1);
+            mTickerMode.setEnabled(false);
+            mTickerAnimation.setEnabled(false);
+        }
     }
 
     @Override

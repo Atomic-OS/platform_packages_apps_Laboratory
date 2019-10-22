@@ -16,6 +16,9 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <Preference android:key="ticker_explain"
+        android:summary="If you activate Ticker here, it will disable Heads Up in; Laboratory > Panels > Heads Up. To enable Heads Up, you need to disable Ticker here." />
+
     <ListPreference
         android:key="ticker_mode"
         android:entries="@array/ticker_mode_entries"

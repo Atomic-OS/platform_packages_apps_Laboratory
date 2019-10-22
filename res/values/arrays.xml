@@ -486,4 +486,120 @@
         <!-- <item>2</item>-->
     </string-array>
 
+    <!-- Smart Pixels -->
+    <string-array name="smart_pixels_percent_strings" translatable="false">
+        <item>12</item>
+        <item>25</item>
+        <item>38</item>
+        <item>50</item>
+        <item>62</item>
+        <item>75</item>
+        <item>88</item>
+    </string-array>
+
+    <string-array name="smart_pixels_percent_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+    <string-array name="smart_pixels_shift_times">
+        <item>15 seconds</item>
+        <item>30 seconds</item>
+        <item>1 minute</item>
+        <item>2 minutes</item>
+        <item>5 minutes</item>
+        <item>10 minutes</item>
+        <item>20 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+    </string-array>
+
+    <string-array name="smart_pixels_shift_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <!-- Edge gestures -->
+    <string-array name="edge_gestures_feedback_time" translatable="false">
+        <item>0</item>
+        <item>50</item>
+        <item>100</item>
+        <item>150</item>
+        <item>200</item>
+        <item>250</item>
+    </string-array>
+
+    <string-array name="edge_gestures_feedback_time_labels">
+        <item>0 ms</item>
+        <item>50 ms</item>
+        <item>100 ms</item>
+        <item>150 ms</item>
+        <item>200 ms</item>
+        <item>250 ms</item>
+    </string-array>
+
+    <string-array name="edge_gestures_long_press_time_labels">
+        <item>50 ms</item>
+        <item>100 ms</item>
+        <item>150 ms</item>
+        <item>200 ms</item>
+        <item>250 ms</item>
+        <item>500 ms</item>
+        <item>750 ms</item>
+        <item>1000 ms</item>
+        <item>1500 ms</item>
+        <item>2000 ms</item>
+    </string-array>
+
+    <string-array name="edge_gestures_long_press_time" translatable="false">
+        <item>50</item>
+        <item>100</item>
+        <item>150</item>
+        <item>200</item>
+        <item>250</item>
+        <item>500</item>
+        <item>750</item>
+        <item>1000</item>
+        <item>1500</item>
+        <item>2000</item>
+    </string-array>
+
+    <string-array name="edge_gestures_back_edges_values">
+        <item>1</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="edge_gestures_back_edges_labels">
+        <item>Left</item>
+        <item>Right</item>
+        <item>Both sides</item>
+    </string-array>
+
+    <!-- Quick Pulldown -->
+    <string-array name="quick_pulldown_entries" translatable="false">
+        <item>@string/quick_pulldown_off</item>
+        <item>@string/quick_pulldown_right</item>
+        <item>@string/quick_pulldown_left</item>
+        <item>@string/quick_pulldown_always</item>
+    </string-array>
+     <string-array name="quick_pulldown_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
 </resources>

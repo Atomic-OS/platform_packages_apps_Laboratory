@@ -38,4 +38,12 @@
         android:icon="@drawable/ic_power_menu"
         android:fragment="com.aos.laboratory.cat.PowerMenu" />
 
+    <!-- Edge Gestures -->
+    <PreferenceScreen
+        android:id="@+id/edge_gestures"
+        android:key="edge_gestures"
+        android:fragment="com.aos.laboratory.EdgeGesturesSettings"
+        android:title="@string/edge_gestures_title"
+        android:icon="@drawable/ic_edge_gestures"/>
+
 </PreferenceScreen>

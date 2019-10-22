@@ -45,6 +45,13 @@
         android:key="notifications_category"
         android:title="@string/notifications_category">
 
+      <PreferenceScreen
+        android:key="notif"
+        android:fragment="com.aos.laboratory.cat.NotificationSettings"
+        android:title="@string/notif_settings_title"
+        android:summary="@string/notif_settings_summary"
+        android:icon="@drawable/ic_notifications_settings_icon"/>
+
      <Preference
         android:key="heads_up_notifications"
         android:title="@string/heads_up_notifications"

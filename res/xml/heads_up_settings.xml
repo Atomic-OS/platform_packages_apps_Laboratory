@@ -14,6 +14,8 @@
      limitations under the License.
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference android:key="heads_up_explain"
+        android:summary="If you activate Heads Up here, it will disable Ticker in; Laboratory > Statusbar > Ticker. To enable Ticker, you need to disable Heads Up here." />
 
     <com.aos.laboratory.preferences.GlobalSettingSwitchPreference
             android:key="heads_up_notifications_enabled"
